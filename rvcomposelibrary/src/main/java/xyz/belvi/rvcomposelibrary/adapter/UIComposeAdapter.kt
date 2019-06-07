@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import co.tractionapp.traction.factory.adapter.UIFactoryViewHolder
-import xyz.belvi.rvcomposelibrary.Field
+import co.tractionapp.traction.factory.adapter.UIComposeViewHolder
+import xyz.belvi.rvcomposelibrary.models.Field
 
-open class UIFactoryAdapter(
+open class UIComposeAdapter(
     private val displayedFields: MutableList<Field>,
-    private var factoryEventListener: (field: Field) -> Unit
-) : RecyclerView.Adapter<UIFactoryViewHolder>(), Filterable {
+    private var event: (uiComposeAdapter: UIComposeAdapter,field: Field, position: Int) -> Unit
+) : RecyclerView.Adapter<UIComposeViewHolder>(), Filterable {
 
-
+    private var search = ""
 
     private val completeFields: MutableList<Field> = arrayListOf()
 
@@ -26,29 +26,22 @@ open class UIFactoryAdapter(
         return displayedFields[position].layout
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UIFactoryViewHolder {
-        return UIFactoryViewHolder(LayoutInflater.from(parent.context).inflate(viewType, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UIComposeViewHolder {
+        return UIComposeViewHolder(LayoutInflater.from(parent.context).inflate(viewType, parent, false))
     }
 
     override fun getItemCount(): Int {
         return displayedFields.size
     }
 
-    override fun onBindViewHolder(holder: UIFactoryViewHolder, position: Int) {
-        holder.bind(displayedFields[position], factoryEventListener)
+    override fun onBindViewHolder(holder: UIComposeViewHolder, position: Int) {
+        holder.bind(displayedFields[position], this, position, event)
     }
 
-
-    fun setEventAdapter(factoryEventListener: (field: Field) -> Unit) {
-        this.factoryEventListener = factoryEventListener
-    }
-
-    fun updateProduct(uiModels: MutableList<Field>) {
+    fun updateFields(uiModels: MutableList<Field>) {
         this.completeFields.clear()
-        this.displayedFields.clear()
         this.completeFields.addAll(uiModels)
-        this.displayedFields.addAll(uiModels)
-        notifyDataSetChanged()
+        filter.filter(search)
     }
 
     fun items(): MutableList<Field> {
@@ -64,8 +57,7 @@ open class UIFactoryAdapter(
     }
 
     fun fieldIndexWithKey(key: String): Int {
-        val field = displayedFields.find { it.key == key }
-        return field?.let { displayedFields.indexOf(field) } ?: kotlin.run { -1 }
+        return displayedFields.indexOfFirst { it.key == key }
     }
 
     fun isFormValid(): Boolean {
@@ -93,6 +85,7 @@ open class UIFactoryAdapter(
 
 
         private fun performSearch(constraint: CharSequence?): FilterResults {
+            search = constraint?.toString() ?: ""
             val filterResult = FilterResults()
 
             val result = constraint?.toString()?.let { text ->
