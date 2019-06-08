@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="white">#FFFFFF</color>
+    <color name="nav_white">#d8d8d8</color>
+    <color name="black">#000000</color>
+    <color name="field_hint">#c9c9c9</color>
 </resources>

@@ -1,8 +1,10 @@
-package xyz.belvi.rvcomposelibrary.compose
+package xyz.belvi.rvcomposelibrary
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
+import xyz.belvi.rvcomposelibrary.compose.RVcomposeHandler
+import xyz.belvi.rvcomposelibrary.compose.RVcomposeImp
 import xyz.belvi.rvcomposelibrary.models.Field
 
 class RVcompose internal constructor(
@@ -29,8 +31,8 @@ class RVcompose internal constructor(
 
 
     internal fun toAttached(): RVcomposeImp {
-        return RVcomposeImp(UIComposeAdapter(items) { uiComposeAdapter,field, position ->
-            clickEvent(uiComposeAdapter,field, position)
+        return RVcomposeImp(UIComposeAdapter(items) { uiComposeAdapter, field, position ->
+            clickEvent(uiComposeAdapter, field, position)
         })
     }
 }

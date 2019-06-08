@@ -1,11 +1,10 @@
 package xyz.belvi.rvcomposelibrary.models
 
 abstract class UIField<T, V, D>(
-    layout: Int,
     var required: Boolean = false,
     var dataSource: D? = null,
-    var validation: ((T) -> Boolean)? = null
-) : Field(layout) {
+    var validation: (() -> Boolean)? = null
+) : Field() {
 
 
     abstract fun getValue(): V
@@ -13,9 +12,11 @@ abstract class UIField<T, V, D>(
 
 }
 
-fun <T> rvField(receiver: T, action: T.() -> Unit): T {
-    receiver.action()
-    return receiver
+inline fun <reified T : Field> rvField(action: T.() -> Unit): T {
+    val entry = T::class.java.newInstance()
+    entry.action()
+    return entry
+
 }
 
 
