@@ -10,7 +10,7 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 open class UIComposeAdapter(
     private val displayedFields: MutableList<Field>,
-    private var event: (uiComposeAdapter: UIComposeAdapter,field: Field, position: Int) -> Unit
+    private var event: (uiComposeAdapter: UIComposeAdapter, field: Field, position: Int) -> Unit
 ) : RecyclerView.Adapter<UIComposeViewHolder>(), Filterable {
 
     private var search = ""
@@ -75,6 +75,11 @@ open class UIComposeAdapter(
                 return it.errorMessage
         }
         return ""
+    }
+
+
+    fun formData(): HashMap<String, Any> {
+        return completeFields.associateTo(hashMapOf()) { it.key to it.getValue() }
     }
 
 

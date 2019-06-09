@@ -6,7 +6,8 @@ import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 abstract class Field(
     open val layout: Int = 0,
     var key: String = "",
-    var errorMessage: String = ""
+    var errorMessage: String = "",
+    var dataSource: Any = Any()
 ) {
 
     abstract fun bind(
@@ -18,6 +19,8 @@ abstract class Field(
 
 
     abstract fun hasValidData(): Boolean
+
+    abstract fun getValue(): Any
 
     open fun matchSearch(text: String): Boolean {
         return true

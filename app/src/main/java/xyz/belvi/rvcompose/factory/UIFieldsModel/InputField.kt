@@ -1,21 +1,26 @@
 package xyz.belvi.rvcompose.factory.UIFieldsModel
 
+import android.text.InputType
 import android.view.View
-import kotlinx.android.synthetic.main.item_info_with_label.view.*
+import kotlinx.android.synthetic.main.item_input.view.*
 import xyz.belvi.rvcompose.R
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
 import xyz.belvi.rvcomposelibrary.models.UIField
 
 
-data class LabelInfo(
+data class InputField(
     override val layout: Int,
-    var label: String = "",
+    var hint: String="",
     var text: String = ""
 ) :
-    UIField<LabelInfo>() {
+    UIField<InputField>() {
 
-    constructor() : this(R.layout.item_info_with_label)
+    constructor() : this(R.layout.item_input)
+
+    override fun getValue(): String {
+        return text
+    }
 
     override fun bind(
         itemView: View,
@@ -23,16 +28,13 @@ data class LabelInfo(
         position: Int,
         event: (uiComposeAdapter: UIComposeAdapter, field: Field, positon: Int) -> Unit
     ) {
-        itemView.label_info_title.text = label
-        itemView.label_info.text = text
+        itemView.item_field.setText(text)
+        itemView.item_field.hint = hint
 
-    }
-
-    override fun getValue(): String {
-        return text
     }
 
     override fun hasValidData(): Boolean {
-        return true
+        return validation?.invoke() ?: kotlin.run { if (required) !text.isBlank() else true }
     }
+
 }

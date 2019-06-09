@@ -1,16 +1,9 @@
 package xyz.belvi.rvcomposelibrary.models
 
-abstract class UIField<T, V, D>(
+abstract class UIField<T>(
     var required: Boolean = false,
-    var dataSource: D? = null,
     var validation: (() -> Boolean)? = null
-) : Field() {
-
-
-    abstract fun getValue(): V
-
-
-}
+) : Field()
 
 inline fun <reified T : Field> rvField(action: T.() -> Unit): T {
     val entry = T::class.java.newInstance()

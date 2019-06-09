@@ -11,8 +11,8 @@ class RVcompose internal constructor(
     private val recyclerView: RecyclerView
 ) {
 
-    private lateinit var clickEvent: (uiComposeAdapter: UIComposeAdapter,field: Field, position: Int) -> Unit
-    private var items = mutableListOf<Field>()
+    private lateinit var clickEvent: (uiComposeAdapter: UIComposeAdapter, field: Field, position: Int) -> Unit
+    var items = mutableListOf<Field>()
 
     fun withLayoutManager(layoutManager: RecyclerView.LayoutManager): RVcompose {
         recyclerView.layoutManager = layoutManager
@@ -24,8 +24,10 @@ class RVcompose internal constructor(
         return this
     }
 
-    fun withFields(items: MutableList<Field>.() -> MutableList<Field>): RVcompose {
-        this.items = items(mutableListOf())
+    inline fun <reified T : Field> withField(item: T.() -> Unit): RVcompose {
+        val entry = T::class.java.newInstance()
+        entry.item()
+        this.items.add(entry)
         return this
     }
 
