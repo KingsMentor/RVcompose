@@ -13,4 +13,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.BtnAction">
+        <item name="colorButtonNormal">@color/btn_signup_selector</item>
+    </style>
+
 </resources>

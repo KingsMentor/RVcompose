@@ -1,37 +1,31 @@
 package xyz.belvi.rvcompose.factory.uiFieldsModel
 
 import android.view.View
-import kotlinx.android.synthetic.main.item_category.view.*
+import kotlinx.android.synthetic.main.item_invoice_receipt.view.*
 import xyz.belvi.rvcompose.R
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
 
 
-data class CategoryField(
-    override val layout: Int = R.layout.item_category,
-    var name: String = ""
+data class InvoiceReceiptField(
+    override val layout: Int = R.layout.item_invoice_receipt,
+    var totalDue: Double = 0.0
 ) :
     Field() {
-
-    override fun getValue(): String {
-        return name
-    }
-
-
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,
         position: Int,
         event: (field: Field) -> Unit
     ) {
-        itemView.category_title.text = name
-        itemView.setOnClickListener {
-            event(this@CategoryField)
-        }
+        itemView.receipt_sub_total.text = String.format("%,.2f", totalDue)
     }
 
+    override fun getValue(): Any {
+        return ""
+    }
     override fun hasValidData(): Boolean {
         return true
     }
-
 }
+

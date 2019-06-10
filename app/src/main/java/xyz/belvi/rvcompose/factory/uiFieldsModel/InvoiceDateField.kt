@@ -7,7 +7,6 @@ import kotlinx.android.synthetic.main.item_invoice_date.view.*
 import xyz.belvi.rvcompose.R
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
-import xyz.belvi.rvcomposelibrary.models.UIField
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -17,7 +16,7 @@ data class InvoiceDateField(
     var hint: String ="",
     var date: Calendar = Calendar.getInstance()
 ) :
-    UIField<InvoiceDateField>() {
+    Field() {
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,

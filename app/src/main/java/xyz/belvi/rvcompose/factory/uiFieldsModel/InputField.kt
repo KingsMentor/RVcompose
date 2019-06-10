@@ -7,7 +7,6 @@ import kotlinx.android.synthetic.main.item_input.view.*
 import xyz.belvi.rvcompose.R
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
-import xyz.belvi.rvcomposelibrary.models.UIField
 
 
 data class InputField(
@@ -15,7 +14,7 @@ data class InputField(
     var hint: String = "",
     var text: String = ""
 ) :
-    UIField<InputField>() {
+    Field() {
 
 
     override fun getValue(): String {

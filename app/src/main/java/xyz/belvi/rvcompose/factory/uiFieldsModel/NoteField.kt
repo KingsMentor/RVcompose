@@ -1,22 +1,20 @@
 package xyz.belvi.rvcompose.factory.uiFieldsModel
 
 import android.view.View
-import kotlinx.android.synthetic.main.item_category.view.*
+import kotlinx.android.synthetic.main.item_input_note.view.*
 import xyz.belvi.rvcompose.R
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
 
-
-data class CategoryField(
-    override val layout: Int = R.layout.item_category,
-    var name: String = ""
+data class NoteField(
+    override val layout: Int = R.layout.item_input_note,
+    var hint: String="",
+    var text: String = ""
 ) :
     Field() {
-
     override fun getValue(): String {
-        return name
+        return text
     }
-
 
     override fun bind(
         itemView: View,
@@ -24,14 +22,13 @@ data class CategoryField(
         position: Int,
         event: (field: Field) -> Unit
     ) {
-        itemView.category_title.text = name
-        itemView.setOnClickListener {
-            event(this@CategoryField)
-        }
+        itemView.item_note.setText(text)
+        itemView.item_note.hint = hint
+
+
     }
 
     override fun hasValidData(): Boolean {
-        return true
+        return if (required) !text.isBlank() else true
     }
-
 }
