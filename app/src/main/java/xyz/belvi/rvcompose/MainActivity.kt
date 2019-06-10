@@ -23,12 +23,6 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
         val rv = recycler.compose {
             withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
-            withField<LabelInfo> {
-
-            }
-            withField<InputField> {
-
-            }
             fieldClicked { uiComposeAdapter, field, position ->
 
             }
