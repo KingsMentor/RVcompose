@@ -1,5 +1,6 @@
 package xyz.belvi.rvcompose.factory
 
+import xyz.belvi.rvcompose.factory.UIFieldsModel.InputField
 import xyz.belvi.rvcompose.factory.UIFieldsModel.LabelInfo
 import xyz.belvi.rvcomposelibrary.models.Field
 import xyz.belvi.rvcomposelibrary.models.rvField
@@ -14,9 +15,9 @@ object ProdFactory {
                 label = "Library Name"
                 text = "Rv Compose"
             }
-            this += rvField<LabelInfo> {
+            this += rvField<InputField> {
 
-                label = "Library Name 2"
+                hint = "Library Name 2"
                 text = "Rv Compose"
             }
         }
