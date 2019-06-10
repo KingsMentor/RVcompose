@@ -35,7 +35,9 @@ open class UIComposeAdapter(
     }
 
     override fun onBindViewHolder(holder: UIComposeViewHolder, position: Int) {
-        holder.bind(displayedFields[position], this, position, event)
+        holder.bind(displayedFields[position], this, position) {
+            event(this, it, position)
+        }
     }
 
     fun updateFields(uiModels: MutableList<Field>) {

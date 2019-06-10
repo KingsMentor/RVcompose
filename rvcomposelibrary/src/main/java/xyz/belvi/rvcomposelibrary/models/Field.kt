@@ -14,7 +14,7 @@ abstract class Field(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,
         position: Int,
-        event: (uiComposeAdapter: UIComposeAdapter, field: Field, positon: Int) -> Unit
+        event: (field: Field) -> Unit
     )
 
 

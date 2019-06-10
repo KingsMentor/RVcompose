@@ -1,6 +1,7 @@
-package xyz.belvi.rvcompose.factory.UIFieldsModel
+package xyz.belvi.rvcompose.factory.uiFieldsModel
 
-import android.text.InputType
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import kotlinx.android.synthetic.main.item_input.view.*
 import xyz.belvi.rvcompose.R
@@ -10,13 +11,12 @@ import xyz.belvi.rvcomposelibrary.models.UIField
 
 
 data class InputField(
-    override val layout: Int,
-    var hint: String="",
+    override val layout: Int = R.layout.item_input,
+    var hint: String = "",
     var text: String = ""
 ) :
     UIField<InputField>() {
 
-    constructor() : this(R.layout.item_input)
 
     override fun getValue(): String {
         return text
@@ -26,10 +26,24 @@ data class InputField(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,
         position: Int,
-        event: (uiComposeAdapter: UIComposeAdapter, field: Field, positon: Int) -> Unit
+        event: (field: Field) -> Unit
     ) {
         itemView.item_field.setText(text)
         itemView.item_field.hint = hint
+        itemView.item_field.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                text = s.toString()
+                event(this@InputField)
+            }
+        })
 
     }
 

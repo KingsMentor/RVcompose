@@ -11,7 +11,7 @@ open class UIComposeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
         uiModel: Field,
         uiComposeAdapter: UIComposeAdapter,
         positon: Int,
-        factoryEventListener: (uiComposeAdapter: UIComposeAdapter,field: Field, positon: Int) -> Unit
+        factoryEventListener: (field: Field) -> Unit
     ) {
         uiModel.bind(itemView, uiComposeAdapter, positon, factoryEventListener)
     }

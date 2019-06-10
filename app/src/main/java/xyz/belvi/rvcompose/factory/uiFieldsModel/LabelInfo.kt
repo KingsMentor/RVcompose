@@ -1,4 +1,4 @@
-package xyz.belvi.rvcompose.factory.UIFieldsModel
+package xyz.belvi.rvcompose.factory.uiFieldsModel
 
 import android.view.View
 import kotlinx.android.synthetic.main.item_info_with_label.view.*
@@ -9,22 +9,22 @@ import xyz.belvi.rvcomposelibrary.models.UIField
 
 
 data class LabelInfo(
-    override val layout: Int,
+    override val layout: Int = R.layout.item_info_with_label,
     var label: String = "",
     var text: String = ""
 ) :
     UIField<LabelInfo>() {
 
-    constructor() : this(R.layout.item_info_with_label)
 
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,
         position: Int,
-        event: (uiComposeAdapter: UIComposeAdapter, field: Field, positon: Int) -> Unit
+        event: (field: Field) -> Unit
     ) {
         itemView.label_info_title.text = label
         itemView.label_info.text = text
+
 
     }
 

@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import xyz.belvi.rvcompose.exts.observe
 import xyz.belvi.rvcompose.exts.withViewModel
-import xyz.belvi.rvcompose.factory.UIFieldsModel.InputField
-import xyz.belvi.rvcompose.factory.UIFieldsModel.LabelInfo
 import xyz.belvi.rvcompose.vms.MainVM
 import xyz.belvi.rvcompose.vms.MainVMFactory
 import xyz.belvi.rvcomposelibrary.compose
