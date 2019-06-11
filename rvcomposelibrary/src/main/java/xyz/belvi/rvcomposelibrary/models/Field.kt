@@ -3,7 +3,7 @@ package xyz.belvi.rvcomposelibrary.models
 import android.view.View
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 
-abstract class Field(
+abstract  class Field(
     open val layout: Int = 0,
     var required: Boolean = false,
     var key: String = "",
