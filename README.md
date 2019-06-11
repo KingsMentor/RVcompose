@@ -5,6 +5,10 @@
 
 *RVcompose*: an easy-to-use, extensible Kotlin DSL for building dynamic reusable UI components with RecycerView
 
+<img src="https://raw.githubusercontent.com/KingsMentor/RVcompose/master/art/usage_sample.png" width="600" />
+
+---
+
 
 # Core
 
