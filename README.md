@@ -4,3 +4,18 @@
 [ ![Download](https://api.bintray.com/packages/kingsmentor/maven/rvCompose/images/download.svg) ](https://bintray.com/kingsmentor/maven/rvCompose/_latestVersion)
 
 *RVcompose*: an easy-to-use, extensible Kotlin DSL for building dynamic reusable UI components with RecycerView
+
+
+# Core
+
+## Gradle Dependency
+
+Add this to your module's `build.gradle` file:
+
+```gradle
+dependencies {
+
+  implementation 'xyz.belvi:rvCompose:1.0.1'
+}
+```
+
