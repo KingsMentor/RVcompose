@@ -45,16 +45,16 @@ ext {
     bintrayRepo = 'maven'
     bintrayName = 'rvCompose'
 
-    publishedGroupId = 'xyz.belvi.mobilevision'
-    libraryName = 'rvCompose'
-    artifact = 'rvCompose'
+    publishedGroupId = 'xyz.belvi'
+    libraryName = 'rvcompose'
+    artifact = 'rvcompose'
 
-    libraryDescription = 'Barcode Scanner powered by Mobile Vision Api'
+    libraryDescription = 'Extensible Kotlin DSL for building dynamic reusable UI components with RecycerView'
 
-    siteUrl = 'https://github.com/KingsMentor/MobileVisionBarcodeScanner'
-    gitUrl = 'https://github.com/KingsMentor/MobileVisionBarcodeScanner.git'
+    siteUrl = 'https://github.com/KingsMentor/rvcompose'
+    gitUrl = 'https://github.com/KingsMentor/rvcompose.git'
 
-    libraryVersion = '2.0.1'
+    libraryVersion = '1.0.1'
 
     developerId = 'kingsmentor'
     developerName = 'Nosakhare Belvi'

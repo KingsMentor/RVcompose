@@ -20,11 +20,20 @@ buildscript {
 
 allprojects {
     repositories {
+
+        mavenCentral()
         google()
         jcenter()
         
     }
+
+    tasks.withType(Javadoc).all {
+        enabled = false
+    }
+
 }
+
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir

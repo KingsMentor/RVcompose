@@ -1,4 +1,4 @@
-package co.tractionapp.traction.factory.adapter
+package xyz.belvi.rvcomposelibrary.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

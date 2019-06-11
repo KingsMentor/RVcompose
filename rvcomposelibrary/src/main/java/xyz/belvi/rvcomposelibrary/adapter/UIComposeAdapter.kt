@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
-import co.tractionapp.traction.factory.adapter.UIComposeViewHolder
 import xyz.belvi.rvcomposelibrary.models.Field
 
 open class UIComposeAdapter(
