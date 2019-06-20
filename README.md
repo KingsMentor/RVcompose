@@ -1,13 +1,12 @@
 # RVcompose
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ef7adb1d9be44ed0848cd9f7a06d43f5)](https://app.codacy.com/app/KingsMentor/RVcompose?utm_source=github.com&utm_medium=referral&utm_content=KingsMentor/RVcompose&utm_campaign=Badge_Grade_Dashboard)
-[ ![Download](https://api.bintray.com/packages/kingsmentor/maven/RVcompose/images/download.svg) ](https://bintray.com/kingsmentor/maven/RVcompose/_latestVersion)
+[ ![Download](https://api.bintray.com/packages/kingsmentor/maven/rvcomposelibrary/images/download.svg) ](https://bintray.com/kingsmentor/maven/rvcomposelibrary/_latestVersion)
 
 *RVcompose*: an easy-to-use, extensible Kotlin DSL for building dynamic reusable UI components with RecycerView
 
-<img src="https://raw.githubusercontent.com/KingsMentor/rvcomposelibrary
-/master/arts/rvcomposelibrary
-.png" width="100%" />
+<img src="https://raw.githubusercontent.com/KingsMentor/rvcompose
+/master/arts/rvcompose.png" width="100%" />
 
 ---
 
