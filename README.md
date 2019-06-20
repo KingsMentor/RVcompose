@@ -19,7 +19,7 @@ Add this to your module's `build.gradle` file:
 ```gradle
 dependencies {
 
-  implementation 'xyz.belvi:rvCompose:1.0.1'
+  implementation 'xyz.belvi:rvcompose:RVcompose:1.0.1'
 }
 ```
 
