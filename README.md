@@ -97,3 +97,39 @@ val rv = recycler.compose {
 ```
 
 
+There are two main components of RVcompose:
+
+The Models that describe how your views should be displayed in the RecyclerView.
+The Factory where the models are used to describe what items to show and with what data.
+
+**Creating Models**
+
+Models are created by extending `Field`
+```kotlin
+data class NoteField(
+    override val layout: Int = R.layout.item_input_note,
+    var hint: String="",
+    var text: String = ""
+) :
+    Field() {
+    override fun getValue(): String {
+    
+    }
+
+    override fun bind(
+        itemView: View,
+        uiComposeAdapter: UIComposeAdapter,
+        position: Int,
+        event: (field: Field) -> Unit
+    ) {
+   
+
+    }
+
+    override fun hasValidData(): Boolean {
+        
+    }
+}
+```
+
+
