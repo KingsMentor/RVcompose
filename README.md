@@ -389,4 +389,13 @@ val rv = recycler.compose {
 
 ## UICompose Functions
 
+UIComposeAdapter provides functions for interacting and updating the models. 
+
 ## Project Using RVCompose
+
+
+---
+
+# Contribution
+
+Pull requests are welcome! We'd love help improving this library. Feel free to browse through open issues to look for things that need work. If you have a feature request or bug, please open a new issue so we can track it.
