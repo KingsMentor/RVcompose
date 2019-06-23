@@ -48,11 +48,10 @@ dependencies {
 
 ```kotlin
 data class InputField(
-    override val layout: Int = R.layout.item_input,
     var hint: String = "",
     var text: String = ""
 ) :
-    Field() {
+    Field( R.layout.item_input) {
 
 
     override fun getValue(): String {
@@ -100,11 +99,12 @@ val rv = recycler.compose {
 There are two main components of RVcompose:
 
 The Models that describe how your views should be displayed in the RecyclerView.
-The Factory where the models are used to describe what items to show and with what data.
+The Adapter where the models are used to describe what items to show , with what data and interaction between models.
 
 **Creating Models**
 
 Models are created by extending `Field`
+
 ```kotlin
 data class NoteField(
     override val layout: Int = R.layout.item_input_note,
@@ -131,5 +131,88 @@ data class NoteField(
     }
 }
 ```
+## Understanding the fields in a Model
+
+---
 
 
+**layout** 
+The layout to be inflated. It is the only required field when `Fieid` is extended
+
+```kotlin
+data class AdditemField(
+    var text: String = ""
+) :
+    Field(R.layout.item_invoice_add_new_item)
+```
+this example shows executing email validation on InputField.
+
+**Validation** 
+This is important when building Forms or if you need to validated entry in the model. 
+
+```kotlin
+rvField<InputField> {
+                hint = "Customer Email"
+                validation = { android.util.Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
+            }
+```
+this example shows executing email validation on InputField.
+
+**Key** 
+for referencing a model from the adapter. 
+
+```kotlin
+rvField<InputField> {
+                hint = "Customer Email"
+                key = "EMAIL_KEY"
+                validation = { android.util.Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
+            }
+```
+
+**required**
+for marking a field as required. validation is invoked ony if required is true
+
+```kotlin
+rvField<InputField> {
+                hint = "Customer Email"
+                required = true
+                key = "EMAIL_KEY"
+                validation = { android.util.Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
+            }
+```
+
+**errormessage**
+message to be displayed when validate fails.
+
+```kotlin
+rvField<InputField>
+    {
+        hint = "Customer Email"
+        required = true
+        key = "EMAIL_KEY"
+        validation = {
+            val isEmail = android.util.Patterns.EMAIL_ADDRESS.matcher(this.text).matches()
+            errorMessage = if (isEmail) "" else "enter a valid email address"
+            isEmail
+        }
+    }
+```
+
+
+**datasource**
+Datasource of this model. You can choose to pass some data as paramerter to your model. A datasource can be an database object or any object that has information for updating your view
+
+```kotlin
+rvField<InputField>
+    {
+        hint = "Customer Email"
+        required = true
+        datasource = Person()
+        key = "EMAIL_KEY"
+        validation = {
+            val isEmail = android.util.Patterns.EMAIL_ADDRESS.matcher(this.text).matches()
+            errorMessage = if (isEmail) "" else "enter a valid email address"
+            isEmail
+        }
+    }
+```
