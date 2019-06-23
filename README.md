@@ -220,3 +220,119 @@ rvField<InputField>
         }
     }
 ```
+
+
+
+**matchSearch()**
+
+Function for adding your model to a search result. `UIComposeAdapter` has model search implementation. To ensure your a model is considered while performing a search, override this function.
+
+```kotlin
+override fun matchSearch(text: String): Boolean {
+        return this.text.contains(text)
+    }
+```
+
+These fields are the basic requirements. You can extend `Field` and build upon the implmentation
+
+---
+
+## Building Models
+
+Models are built in 2 ways when setting up rvCompose. 
+
+**1. withField**
+
+Used this when initialising rvCompose. This usecase applies if views are statics or known during compile time. 
+
+```kotlin
+
+ val rv = recycler.compose {
+            withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
+            withField<InputField> {
+                hint = "Customer Email"
+                key = "EMAIL_KEY"
+                required = true
+                validation = { Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
+            }
+            withField<InputField> {
+                hint = "Customer Name"
+                key = "NAME_KEY"
+                required = true
+                validation = { this.text.isNotBlank()}
+            }
+            fieldClicked { uiComposeAdapter, field, position ->
+
+            }
+        }
+
+```
+
+**2. rvField**
+
+There are cases that requires you to build your models on runtime and update the views. In cases like this, I suggest building a factory to handle this:
+
+```kotlin
+object CustomerFactory {
+    fun sampleUI(): MutableList<Field> {
+        return mutableListOf<Field>().withFields {
+
+            this += rvField<InputField> {
+                hint = "Customer Email"
+                key = "email"
+                required = true
+                validation = { android.util.Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
+            }
+            this += rvField<InvoiceDateField> {
+                hint = "Invoice Date"
+                date = Calendar.getInstance()
+
+            }
+            this += rvField<SpinnerField> {
+                items = mutableListOf("Pay with Cash", "Pay with Card", "Pay some other time")
+            }
+            this += rvField<InvoiceDateField> {
+                hint = "Due Date"
+                date = Calendar.getInstance()
+
+            }
+            this += rvField<AdditemField> {
+                text = "Add Item"
+            }
+
+            this += rvField<InvoiceReceiptField> {
+                totalDue = 0.0
+            }
+            this += rvField<NoteField> {
+               hint="additional information for customer"
+            }
+            this+= rvField<ActionField> {
+                text = "Create Invoice"
+            }
+
+        }
+
+
+    }
+
+
+}
+```
+
+this factory returns a list of models `MutableList<Field>` the ui can be updated with :
+
+```kotlin
+rv.getAdapter().updateFields(CustomerFactory.sampleUI())
+```
+
+
+---
+
+## Interaction between Models and Updating Models. 
+
+
+---
+
+## Handling Event 
+
+## UICompose Functions
