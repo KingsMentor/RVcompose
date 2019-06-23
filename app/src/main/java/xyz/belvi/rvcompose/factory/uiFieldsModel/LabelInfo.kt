@@ -8,11 +8,10 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 
 data class LabelInfo(
-    override val layout: Int = R.layout.item_info_with_label,
     var label: String = "",
     var text: String = ""
 ) :
-    Field() {
+    Field(R.layout.item_info_with_label) {
 
 
     override fun bind(

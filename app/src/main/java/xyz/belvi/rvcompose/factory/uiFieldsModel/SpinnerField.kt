@@ -10,11 +10,10 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 
 data class SpinnerField(
-    override val layout: Int = R.layout.item_spinner_no_title,
     var items: MutableList<String> = mutableListOf(),
     var selectedPosition: Int = 0
 ) :
-    Field() {
+    Field(R.layout.item_spinner_no_title) {
 
     override fun bind(
         itemView: View,

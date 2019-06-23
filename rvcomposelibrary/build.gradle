@@ -43,18 +43,18 @@ repositories {
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'rvCompose'
+    bintrayName = 'rvcomposelibrary'
 
-    publishedGroupId = 'xyz.belvi'
-    libraryName = 'rvcompose'
-    artifact = 'rvcompose'
+    publishedGroupId = 'xyz.belvi:rvcompose'
+    libraryName = 'rvcomposelibrary'
+    artifact = 'rvcomposelibrary'
 
     libraryDescription = 'Extensible Kotlin DSL for building dynamic reusable UI components with RecycerView'
 
     siteUrl = 'https://github.com/KingsMentor/rvcompose'
     gitUrl = 'https://github.com/KingsMentor/rvcompose.git'
 
-    libraryVersion = '1.0.1'
+    libraryVersion = '1.0.2'
 
     developerId = 'kingsmentor'
     developerName = 'Nosakhare Belvi'

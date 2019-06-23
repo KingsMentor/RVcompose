@@ -10,11 +10,11 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 
 data class InputField(
-    override val layout: Int = R.layout.item_input,
     var hint: String = "",
     var text: String = ""
 ) :
-    Field() {
+    Field(R.layout.item_input) {
+
 
 
     override fun getValue(): String {

@@ -32,23 +32,6 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                 validation = { Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
 
             }
-            withField<InvoiceDateField> {
-                hint = "Invoice Date"
-                date = Calendar.getInstance()
-            }
-
-            withField<SpinnerField> {
-                items = mutableListOf("Pay with Cash", "Pay with Card", "Pay some other time")
-            }
-
-            withField<InvoiceReceiptField> {
-                totalDue = 0.0
-            }
-
-            withField<ActionField> {
-                text = "Create Invoice"
-            }
-
             fieldClicked { uiComposeAdapter, field, position ->
 
             }
@@ -69,3 +52,4 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
 
 }
+

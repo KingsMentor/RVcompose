@@ -7,11 +7,10 @@ import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
 
 data class NoteField(
-    override val layout: Int = R.layout.item_input_note,
     var hint: String="",
     var text: String = ""
 ) :
-    Field() {
+    Field(R.layout.item_input_note) {
     override fun getValue(): String {
         return text
     }

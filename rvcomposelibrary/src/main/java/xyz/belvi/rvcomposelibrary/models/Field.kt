@@ -3,8 +3,8 @@ package xyz.belvi.rvcomposelibrary.models
 import android.view.View
 import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 
-abstract  class Field(
-    open val layout: Int = 0,
+abstract class Field(
+    open val layout: Int ,
     var required: Boolean = false,
     var key: String = "",
     var errorMessage: String = "",
@@ -20,12 +20,15 @@ abstract  class Field(
     )
 
 
-    abstract fun hasValidData(): Boolean
-
     abstract fun getValue(): Any
 
     open fun matchSearch(text: String): Boolean {
         return true
+    }
+
+
+    open fun hasValidData(): Boolean {
+        return if (required) validation?.invoke() ?: kotlin.run { false } else false
     }
 
 
@@ -40,6 +43,6 @@ inline fun <reified T : Field> rvField(action: T.() -> Unit): T {
 
 
 fun MutableList<Field>.withFields(block: MutableList<Field>.() -> Unit): MutableList<Field> {
-    this.addAll( mutableListOf<Field>().apply(block))
+    this.addAll(mutableListOf<Field>().apply(block))
     return this
 }

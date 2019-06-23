@@ -12,11 +12,10 @@ import java.util.*
 
 
 data class InvoiceDateField(
-    override val layout: Int = R.layout.item_invoice_date,
     var hint: String ="",
     var date: Calendar = Calendar.getInstance()
 ) :
-    Field() {
+    Field( R.layout.item_invoice_date) {
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,

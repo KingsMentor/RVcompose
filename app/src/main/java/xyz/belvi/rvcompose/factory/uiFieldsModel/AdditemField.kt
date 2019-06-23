@@ -8,10 +8,9 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 
 data class AdditemField(
-    override val layout: Int = R.layout.item_invoice_add_new_item,
     var text: String = ""
 ) :
-    Field() {
+    Field(R.layout.item_invoice_add_new_item) {
     override fun getValue(): Any {
         return "Add Item"
     }

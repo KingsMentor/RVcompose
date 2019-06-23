@@ -8,10 +8,9 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 
 data class InvoiceReceiptField(
-    override val layout: Int = R.layout.item_invoice_receipt,
     var totalDue: Double = 0.0
 ) :
-    Field() {
+    Field(R.layout.item_invoice_receipt) {
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,

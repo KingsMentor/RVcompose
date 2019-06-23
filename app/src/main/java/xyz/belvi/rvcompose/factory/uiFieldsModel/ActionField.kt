@@ -8,10 +8,9 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 
 data class ActionField(
-    override val layout: Int = R.layout.item_btn_action,
     var text: String = ""
 ) :
-    Field() {
+    Field( R.layout.item_btn_action) {
     override fun getValue(): Any {
         return text
     }

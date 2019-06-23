@@ -8,10 +8,9 @@ import xyz.belvi.rvcomposelibrary.models.Field
 
 
 data class CategoryField(
-    override val layout: Int = R.layout.item_category,
     var name: String = ""
 ) :
-    Field() {
+    Field(R.layout.item_category) {
 
     override fun getValue(): String {
         return name
