@@ -394,7 +394,7 @@ UIComposeAdapter provides functions for interacting and updating the models.
 ## Project Using RVCompose
 
 
----
+
 
 # Contribution
 
