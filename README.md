@@ -131,9 +131,8 @@ data class NoteField(
     }
 }
 ```
-## Understanding the fields in a Model
 
----
+## Understanding the fields in a Model
 
 **layout** 
 
