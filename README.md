@@ -135,8 +135,8 @@ data class NoteField(
 
 ---
 
-
 **layout** 
+
 The layout to be inflated. It is the only required field when `Fieid` is extended
 
 ```kotlin
@@ -148,6 +148,7 @@ data class AdditemField(
 this example shows executing email validation on InputField.
 
 **Validation** 
+
 This is important when building Forms or if you need to validated entry in the model. 
 
 ```kotlin
@@ -159,6 +160,7 @@ rvField<InputField> {
 this example shows executing email validation on InputField.
 
 **Key** 
+
 for referencing a model from the adapter. 
 
 ```kotlin
@@ -170,6 +172,7 @@ rvField<InputField> {
 ```
 
 **required**
+
 for marking a field as required. validation is invoked ony if required is true
 
 ```kotlin
@@ -182,6 +185,7 @@ rvField<InputField> {
 ```
 
 **errormessage**
+
 message to be displayed when validate fails.
 
 ```kotlin
@@ -200,6 +204,7 @@ rvField<InputField>
 
 
 **datasource**
+
 Datasource of this model. You can choose to pass some data as paramerter to your model. A datasource can be an database object or any object that has information for updating your view
 
 ```kotlin
