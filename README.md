@@ -89,7 +89,7 @@ val rv = recycler.compose {
                 validation = { Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
 
             }
-            fieldClicked { uiComposeAdapter, field, position ->
+            fieldEvent { uiComposeAdapter, field, position ->
 
             }
         }
@@ -330,10 +330,62 @@ rv.getAdapter().updateFields(CustomerFactory.sampleUI())
 
 ## Interaction between Models and Updating Models. 
 
+interaction between Models can happen in `bind()`. This provide `UIComposeAdapter` that you can use to retrieve a model by key or index, update the model and reflect changes on view by any of RecyclerView notifyAdapter functions. 
+
+```kotlin
+override fun bind(
+        itemView: View,
+        uiComposeAdapter: UIComposeAdapter,
+        position: Int,
+        event: (field: Field) -> Unit
+    ) {
+
+        itemView.btn_action_field.text = text
+        itemView.btn_action_field.setOnClickListener {
+            (uiComposeAdapter.fieldWithKey("email") as? InputField)?.let {
+                it.text = "button clicked"
+                uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key))
+            }
+            
+        }
+
+    }
+```
+
 
 ---
 
 ## Handling Event 
+
+To handle event on `fieldClicked`, a Model needs to trigger event on `OnClick` of the inflated view. 
+
+```kotlin
+override fun bind(
+        itemView: View,
+        uiComposeAdapter: UIComposeAdapter,
+        position: Int,
+        event: (field: Field) -> Unit
+    ) {
+        itemView.btn_action_field.text = text
+        itemView.btn_action_field.setOnClickListener {
+          // you can also perform actions here
+          event(this)
+        }
+
+    }
+```
+
+You can also handle event for all Models in `fieldEvent`
+
+```kotlin
+val rv = recycler.compose {
+            withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
+            fieldEvent { uiComposeAdapter, field, position ->
+                // perform action 
+            }
+        }
+```
+
 
 ## UICompose Functions
 
