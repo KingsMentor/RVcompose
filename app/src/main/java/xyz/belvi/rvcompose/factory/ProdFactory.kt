@@ -8,7 +8,7 @@ import java.util.*
 
 
 object ProdFactory {
-    fun dummyUI(): MutableList<Field> {
+    fun sampleUI(): MutableList<Field> {
         return mutableListOf<Field>().withFields {
 
             this += rvField<InputField> {

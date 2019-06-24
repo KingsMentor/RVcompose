@@ -16,6 +16,12 @@ data class InvoiceDateField(
     var date: Calendar = Calendar.getInstance()
 ) :
     Field( R.layout.item_invoice_date) {
+
+    @SuppressLint("SimpleDateFormat")
+    override fun getValue(): String {
+        return SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'").format(Date(date.timeInMillis))
+    }
+
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,
@@ -59,9 +65,6 @@ data class InvoiceDateField(
         return true
     }
 
-    @SuppressLint("SimpleDateFormat")
-    override fun getValue(): String {
-        return SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'").format(Date(date.timeInMillis))
-    }
+
 }
 

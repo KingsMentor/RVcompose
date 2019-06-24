@@ -50,4 +50,8 @@ data class InputField(
         return validation?.invoke() ?: kotlin.run { if (required) !text.isBlank() else true }
     }
 
+    override fun matchSearch(text: String): Boolean {
+        return this.text.contains(text)
+    }
+
 }

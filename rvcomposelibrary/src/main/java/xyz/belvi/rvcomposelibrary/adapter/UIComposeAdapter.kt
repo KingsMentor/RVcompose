@@ -13,6 +13,7 @@ open class UIComposeAdapter(
 ) : RecyclerView.Adapter<UIComposeViewHolder>(), Filterable {
 
     private var search = ""
+    private var formWarning = ""
 
     private val completeFields: MutableList<Field> = arrayListOf()
 
@@ -39,45 +40,70 @@ open class UIComposeAdapter(
         }
     }
 
+    /**
+     * Update the models in this adapter
+     */
     fun updateFields(uiModels: MutableList<Field>) {
         this.completeFields.clear()
         this.completeFields.addAll(uiModels)
         filter.filter(search)
     }
 
-    fun items(): MutableList<Field> {
+    /**
+     * retrieve models in this adapter
+     */
+    fun models(): MutableList<Field> {
         return displayedFields
     }
 
+    /**
+     * return a @Field with @key in @UIComposeAdapter
+     */
     fun fieldWithKey(key: String): Field? {
         return displayedFields.find { it.key == key }
     }
 
+    /**
+     * return the position of @field in this adapter @UIComposeAdapter
+     */
     fun fieldIndex(field: Field): Int {
         return displayedFields.indexOfFirst { field.key == it.key }
     }
 
+    /**
+     * return a model with key @key
+     */
     fun fieldIndexWithKey(key: String): Int {
         return displayedFields.indexOfFirst { it.key == key }
     }
 
+    /**
+     * Perform validation check on all models
+     */
     fun isFormValid(): Boolean {
-        var result = true
+        formWarning = ""
         displayedFields.forEach {
-            result = result && it.hasValidData()
+            if (!it.hasValidData()) {
+                formWarning = it.errorMessage
+                return false
+            }
+
         }
-        return result
+        return true
     }
 
 
+    /**
+     * error message of model with failed validation. This returns empty if @isFormValid() has not been called at least one.
+     * To ensure this returns the right message, call @isFormValid before calling this method
+     */
     fun formWarning(): String {
-        displayedFields.forEach {
-            if (!it.hasValidData())
-                return it.errorMessage
-        }
-        return ""
+        return formWarning
     }
 
+    /**
+     * returns a map of keys and value of the models
+     */
 
     fun formData(): HashMap<String, Any> {
         return completeFields.associateTo(hashMapOf()) { it.key to it.getValue() }

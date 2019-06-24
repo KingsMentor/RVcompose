@@ -19,14 +19,22 @@ abstract class Field(
         event: (field: Field) -> Unit
     )
 
+    /**
+     * the value that this field should return when called in @UIComposeAdapter or in cases when RVcompose is used as form builder
+     */
 
     abstract fun getValue(): Any
 
+    /**
+     * define criteria for including this field in a search result
+     */
     open fun matchSearch(text: String): Boolean {
         return true
     }
 
-
+    /**
+     * perform a validation check on this field @Field
+     */
     open fun hasValidData(): Boolean {
         return if (required) validation?.invoke() ?: kotlin.run { false } else false
     }

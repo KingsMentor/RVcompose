@@ -19,7 +19,7 @@ class RVcompose internal constructor(
         return this
     }
 
-    fun fieldClicked(event: (uiComposeAdapter: UIComposeAdapter, field: Field, position: Int) -> Unit): RVcompose {
+    fun fieldEvent(event: (uiComposeAdapter: UIComposeAdapter, field: Field, position: Int) -> Unit): RVcompose {
         clickEvent = event
         return this
     }

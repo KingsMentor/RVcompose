@@ -3,6 +3,7 @@ package xyz.belvi.rvcompose
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
+import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,8 +14,6 @@ import xyz.belvi.rvcompose.factory.uiFieldsModel.*
 import xyz.belvi.rvcompose.vms.MainVM
 import xyz.belvi.rvcompose.vms.MainVMFactory
 import xyz.belvi.rvcomposelibrary.compose
-import xyz.belvi.rvcomposelibrary.models.rvField
-import java.util.*
 
 class MainActivity : AppCompatActivity(), LifecycleOwner {
 
@@ -25,15 +24,16 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
 
         val rv = recycler.compose {
             withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
-            withField<InputField> {
-                hint = "Customer Email"
-                key = "email"
-                required = true
-                validation = { Patterns.EMAIL_ADDRESS.matcher(this.text).matches() }
+            fieldEvent { uiComposeAdapter, field, position ->
+                if (field is ActionField && uiComposeAdapter.isFormValid()) {
+                    (uiComposeAdapter.fieldWithKey("email") as InputField).let {
+                        it.text = "example@example.com"
+                        uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key = it.key))
+                    }
 
-            }
-            fieldClicked { uiComposeAdapter, field, position ->
-
+                } else {
+                    Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
+                }
             }
         }
 

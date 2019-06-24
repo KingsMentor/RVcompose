@@ -11,7 +11,7 @@ open class MainVM : ViewModel() {
 
     fun productUiPage() {
 
-        uiFields.postValue(ProdFactory.dummyUI())
+        uiFields.postValue(ProdFactory.sampleUI())
         InputField()
 
 

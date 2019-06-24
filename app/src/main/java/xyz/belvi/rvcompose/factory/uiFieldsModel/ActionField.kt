@@ -10,7 +10,7 @@ import xyz.belvi.rvcomposelibrary.models.Field
 data class ActionField(
     var text: String = ""
 ) :
-    Field( R.layout.item_btn_action) {
+    Field(R.layout.item_btn_action) {
     override fun getValue(): Any {
         return text
     }
@@ -28,6 +28,10 @@ data class ActionField(
 
         itemView.btn_action_field.text = text
         itemView.btn_action_field.setOnClickListener {
+            (uiComposeAdapter.fieldWithKey("email") as? InputField)?.let {
+                it.text = "button clicked"
+                uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key))
+            }
             event(this)
         }
 
