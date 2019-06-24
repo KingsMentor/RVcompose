@@ -1,7 +1,7 @@
 # RVcompose
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ef7adb1d9be44ed0848cd9f7a06d43f5)](https://app.codacy.com/app/KingsMentor/RVcompose?utm_source=github.com&utm_medium=referral&utm_content=KingsMentor/RVcompose&utm_campaign=Badge_Grade_Dashboard)
-[ ![Download](https://api.bintray.com/packages/kingsmentor/maven/rvcomposelibrary/images/download.svg) ](https://bintray.com/kingsmentor/maven/rvcomposelibrary/_latestVersion)
+[![Download](https://api.bintray.com/packages/kingsmentor/maven/rvcomposelibrary/images/download.svg) ](https://bintray.com/kingsmentor/maven/rvcomposelibrary/_latestVersion)
 
 *RVcompose*: an easy-to-use, extensible Kotlin DSL for building dynamic reusable UI components with RecycerView
 
@@ -9,8 +9,6 @@
 
 ---
 
-
-# Core
 
 ## Gradle Dependency
 
@@ -22,7 +20,6 @@ dependencies {
   implementation 'xyz.belvi:rvcompose:rvcomposelibrary:1.0.1'
 }
 ```
-
 
 ---
 
@@ -76,7 +73,6 @@ data class InputField(
 }
 ```
 
-
 **Finally**, you can begin using the DSL API:
 
 ```kotlin
@@ -94,7 +90,6 @@ val rv = recycler.compose {
             }
         }
 ```
-
 
 There are two main components of RVcompose:
 
@@ -134,9 +129,7 @@ data class NoteField(
 
 ## Understanding the fields in a Model
 
-**layout** 
-
-The layout to be inflated. It is the only required field when `Fieid` is extended
+`layout`  The layout to be inflated. It is the only required field when `Fieid` is extended
 
 ```kotlin
 data class AdditemField(
@@ -146,9 +139,7 @@ data class AdditemField(
 ```
 this example shows executing email validation on InputField.
 
-**Validation** 
-
-This is important when building Forms or if you need to validated entry in the model. 
+`Validation` This is important when building Forms or if you need to validated entry in the model. 
 
 ```kotlin
 rvField<InputField> {
@@ -158,9 +149,7 @@ rvField<InputField> {
 ```
 this example shows executing email validation on InputField.
 
-**Key** 
-
-for referencing a model from the adapter. 
+`Key` for referencing a model from the adapter. 
 
 ```kotlin
 rvField<InputField> {
@@ -170,9 +159,7 @@ rvField<InputField> {
             }
 ```
 
-**required**
-
-for marking a field as required. validation is invoked ony if required is true
+`required` for marking a field as required. validation is invoked ony if required is true
 
 ```kotlin
 rvField<InputField> {
@@ -183,9 +170,7 @@ rvField<InputField> {
             }
 ```
 
-**errormessage**
-
-message to be displayed when validate fails.
+`errormessage` message to be displayed when validate fails.
 
 ```kotlin
 rvField<InputField>
@@ -202,9 +187,7 @@ rvField<InputField>
 ```
 
 
-**datasource**
-
-Datasource of this model. You can choose to pass some data as paramerter to your model. A datasource can be an database object or any object that has information for updating your view
+`datasource` Datasource of this model. You can choose to pass some data as paramerter to your model. A datasource can be an database object or any object that has information for updating your view
 
 ```kotlin
 rvField<InputField>
@@ -223,9 +206,7 @@ rvField<InputField>
 
 
 
-**matchSearch()**
-
-Function for adding your model to a search result. `UIComposeAdapter` has model search implementation. To ensure your a model is considered while performing a search, override this function.
+`matchSearch()` Function for adding your model to a search result. `UIComposeAdapter` has model search implementation. To ensure your a model is considered while performing a search, override this function.
 
 ```kotlin
 override fun matchSearch(text: String): Boolean {
@@ -234,9 +215,7 @@ override fun matchSearch(text: String): Boolean {
 ```
 
 
-**getValue(): Any**
-
-Override the method to set the value the model should return.
+`getValue(): Any` Override the method to set the value the model should return.
 
 ```kotlin
 data class InvoiceDateField(
@@ -259,8 +238,7 @@ These fields are the basic requirements. You can extend `Field` and build upon t
 ## Building Models
 
 Models are built in 2 ways when setting up rvCompose. 
-
-**1. withField**
+### 1. withField
 
 Used this when initialising rvCompose. This usecase applies if views are statics or known during compile time. 
 
@@ -287,7 +265,7 @@ Used this when initialising rvCompose. This usecase applies if views are statics
 
 ```
 
-**2. rvField**
+### 2. rvField
 
 There are cases that requires you to build your models on runtime and update the views. In cases like this, I suggest building a factory to handle this:
 
