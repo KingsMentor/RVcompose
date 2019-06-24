@@ -233,6 +233,25 @@ override fun matchSearch(text: String): Boolean {
     }
 ```
 
+
+**getValue(): Any**
+
+Override the method to set the value the model should return.
+
+```kotlin
+data class InvoiceDateField(
+    var hint: String ="",
+    var date: Calendar = Calendar.getInstance()
+) :
+    Field( R.layout.item_invoice_date) {
+
+    @SuppressLint("SimpleDateFormat")
+    override fun getValue(): String {
+        return SimpleDateFormat("yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'").format(Date(date.timeInMillis))
+    }
+```
+
+
 These fields are the basic requirements. You can extend `Field` and build upon the implmentation
 
 ---
@@ -391,9 +410,50 @@ val rv = recycler.compose {
 
 UIComposeAdapter provides functions for interacting and updating the models. 
 
-## Project Using RVCompose
+**fieldWithKey()**
+
+retrieve a Model from the adapter with a key.
+
+**fieldIndex()**
+
+retrieve a Model from the adapter with an index (if the index is known)
+
+**fieldIndexWithKey()**
+
+retrieve a Model Index from the adapter with Key
+
+**isFormValid()**
+
+Run validation check on Models in the adapter
+
+**formWarning()**
+
+returns an error message for field with failed validation
+
+**formData()**
+
+Returns Hashmap<key,value> for models in the adapter.
 
 
+```kotlin
+ val rv = recycler.compose {
+            withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
+            fieldEvent { uiComposeAdapter, field, position ->
+                if (field is ActionField && uiComposeAdapter.isFormValid()) {
+                    (uiComposeAdapter.fieldWithKey("email") as InputField).let {
+                        it.text = "example@example.com"
+                        uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key = it.key))
+                    }
+
+                } else {
+                    Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+```
+
+## Applications Build with RVCompose
+[Traction App](https://play.google.com/store/apps/details?id=co.tractionapp.traction)
 
 
 # Contribution
