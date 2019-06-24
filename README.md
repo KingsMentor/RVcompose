@@ -318,7 +318,7 @@ object CustomerFactory {
 }
 ```
 
-this factory returns a list of models `MutableList<Field>` the ui can be updated with :
+this factory returns a list of models `MutableList<Field>` the ui is updated with :
 
 ```kotlin
 rv.getAdapter().updateFields(CustomerFactory.sampleUI())
