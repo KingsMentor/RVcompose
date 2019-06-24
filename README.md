@@ -94,8 +94,9 @@ val rv = recycler.compose {
 
 There are two main components of RVcompose:
 
-The Models that describe how your views should be displayed in the RecyclerView.
-The Adapter where the models are used to describe what items to show , with what data and interaction between models.
+**The Model** that describe how your views should be displayed in the RecyclerView.
+
+**The Adapter** where the models are used to describe what items to show , with what data and interaction between models.
 
 **Creating Models**
 
