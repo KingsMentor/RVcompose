@@ -26,13 +26,14 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
             withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
             fieldEvent { uiComposeAdapter, field, position ->
                 if (field is ActionField && uiComposeAdapter.isFormValid()) {
-                    (uiComposeAdapter.fieldWithKey("email") as InputField).let {
+                    (uiComposeAdapter.fieldWithKey("email") as? InputField)?.let {
                         it.text = "example@example.com"
                         uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key = it.key))
                     }
 
                 } else {
-                    Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
+                    // show do something with error message
+                   Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
                 }
             }
         }
