@@ -410,30 +410,17 @@ val rv = recycler.compose {
 
 UIComposeAdapter provides functions for interacting and updating the models. 
 
-**fieldWithKey()**
+`fieldWithKey()`  retrieve a Model from the adapter with a key.
 
-retrieve a Model from the adapter with a key.
+`fieldIndex()`  retrieve a Model from the adapter with an index (if the index is known)
 
-**fieldIndex()**
+`fieldIndexWithKey()`  retrieve a Model Index from the adapter with Key
 
-retrieve a Model from the adapter with an index (if the index is known)
+`isFormValid()`  Run validation check on Models in the adapter
 
-**fieldIndexWithKey()**
+`formWarning()`  returns an error message for field with failed validation
 
-retrieve a Model Index from the adapter with Key
-
-**isFormValid()**
-
-Run validation check on Models in the adapter
-
-**formWarning()**
-
-returns an error message for field with failed validation
-
-**formData()**
-
-Returns Hashmap<key,value> for models in the adapter.
-
+`formData()`  Returns Hashmap<key,value> for models in the adapter.
 
 ```kotlin
  val rv = recycler.compose {
