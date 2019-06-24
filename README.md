@@ -418,7 +418,7 @@ UIComposeAdapter provides functions for interacting and updating the models.
         }
 ```
 
-## Applications developed with RVCompose
+## Applications Developed with RVCompose
 [Traction App](https://play.google.com/store/apps/details?id=co.tractionapp.traction)
 
 
