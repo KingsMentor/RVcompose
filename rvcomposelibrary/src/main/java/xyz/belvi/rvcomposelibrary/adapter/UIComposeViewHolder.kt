@@ -6,7 +6,6 @@ import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
 
 open class UIComposeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
     fun bind(
         uiModel: Field,
         uiComposeAdapter: UIComposeAdapter,
@@ -15,5 +14,4 @@ open class UIComposeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     ) {
         uiModel.bind(itemView, uiComposeAdapter, positon, factoryEventListener)
     }
-
 }

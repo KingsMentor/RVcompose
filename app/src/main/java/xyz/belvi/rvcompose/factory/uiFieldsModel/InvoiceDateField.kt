@@ -12,10 +12,10 @@ import java.util.*
 
 
 data class InvoiceDateField(
-    var hint: String ="",
+    var hint: String = "",
     var date: Calendar = Calendar.getInstance()
 ) :
-    Field( R.layout.item_invoice_date) {
+    Field(R.layout.item_invoice_date) {
 
     @SuppressLint("SimpleDateFormat")
     override fun getValue(): String {
@@ -35,7 +35,6 @@ data class InvoiceDateField(
             )}")
 
         itemView.setOnClickListener {
-
             val picker = DatePickerDialog(
                 it.context,
                 DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
@@ -64,7 +63,5 @@ data class InvoiceDateField(
     override fun hasValidData(): Boolean {
         return true
     }
-
-
 }
 

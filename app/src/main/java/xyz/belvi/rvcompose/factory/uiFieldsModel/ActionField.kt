@@ -25,7 +25,6 @@ data class ActionField(
         position: Int,
         event: (field: Field) -> Unit
     ) {
-
         itemView.btn_action_field.text = text
         itemView.btn_action_field.setOnClickListener {
             (uiComposeAdapter.fieldWithKey("email") as? InputField)?.let {
@@ -36,7 +35,5 @@ data class ActionField(
         }
 
     }
-
-
 }
 

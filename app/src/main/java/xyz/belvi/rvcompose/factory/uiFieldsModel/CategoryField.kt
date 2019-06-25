@@ -16,7 +16,6 @@ data class CategoryField(
         return name
     }
 
-
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,
@@ -32,5 +31,4 @@ data class CategoryField(
     override fun hasValidData(): Boolean {
         return true
     }
-
 }

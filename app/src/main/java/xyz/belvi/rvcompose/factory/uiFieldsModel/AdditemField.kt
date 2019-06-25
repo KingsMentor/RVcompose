@@ -28,11 +28,8 @@ data class AdditemField(
 
         itemView.invoice_add_item_text.text = text
         itemView.setOnClickListener {
-           event(this)
+            event(this)
         }
-
     }
-
-
 }
 

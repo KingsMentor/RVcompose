@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
         val rv = recycler.compose {
             withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
             fieldEvent { uiComposeAdapter, field, position ->
@@ -30,15 +29,12 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                         it.text = "example@example.com"
                         uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key = it.key))
                     }
-
                 } else {
                     // show do something with error message
-                   Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
                 }
             }
         }
-
-
         withViewModel<MainVM>(MainVMFactory) {
             productUiPage()
             observe(uiFields) { fields ->
@@ -47,10 +43,6 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
                 }
             }
         }
-
-
     }
-
-
 }
 

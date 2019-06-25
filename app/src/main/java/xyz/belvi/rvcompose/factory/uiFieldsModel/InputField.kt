@@ -15,8 +15,6 @@ data class InputField(
 ) :
     Field(R.layout.item_input) {
 
-
-
     override fun getValue(): String {
         return text
     }
@@ -43,7 +41,6 @@ data class InputField(
                 event(this@InputField)
             }
         })
-
     }
 
     override fun hasValidData(): Boolean {
@@ -53,5 +50,4 @@ data class InputField(
     override fun matchSearch(text: String): Boolean {
         return this.text.contains(text)
     }
-
 }

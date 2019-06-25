@@ -7,7 +7,7 @@ import xyz.belvi.rvcomposelibrary.adapter.UIComposeAdapter
 import xyz.belvi.rvcomposelibrary.models.Field
 
 data class NoteField(
-    var hint: String="",
+    var hint: String = "",
     var text: String = ""
 ) :
     Field(R.layout.item_input_note) {
@@ -23,8 +23,6 @@ data class NoteField(
     ) {
         itemView.item_note.setText(text)
         itemView.item_note.hint = hint
-
-
     }
 
     override fun hasValidData(): Boolean {

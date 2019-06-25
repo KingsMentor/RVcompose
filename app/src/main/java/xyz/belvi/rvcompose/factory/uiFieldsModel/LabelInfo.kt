@@ -12,8 +12,6 @@ data class LabelInfo(
     var text: String = ""
 ) :
     Field(R.layout.item_info_with_label) {
-
-
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,
@@ -22,8 +20,6 @@ data class LabelInfo(
     ) {
         itemView.label_info_title.text = label
         itemView.label_info.text = text
-
-
     }
 
     override fun getValue(): String {

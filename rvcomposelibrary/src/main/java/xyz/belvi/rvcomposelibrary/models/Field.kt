@@ -49,7 +49,6 @@ inline fun <reified T : Field> rvField(action: T.() -> Unit): T {
 
 }
 
-
 fun MutableList<Field>.withFields(block: MutableList<Field>.() -> Unit): MutableList<Field> {
     this.addAll(mutableListOf<Field>().apply(block))
     return this

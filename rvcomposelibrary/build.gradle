@@ -54,7 +54,7 @@ ext {
     siteUrl = 'https://github.com/KingsMentor/rvcompose'
     gitUrl = 'https://github.com/KingsMentor/rvcompose.git'
 
-    libraryVersion = '1.0.2'
+    libraryVersion = '1.0.3'
 
     developerId = 'kingsmentor'
     developerName = 'Nosakhare Belvi'

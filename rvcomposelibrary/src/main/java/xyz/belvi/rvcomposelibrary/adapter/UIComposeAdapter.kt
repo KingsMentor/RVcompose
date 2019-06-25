@@ -21,7 +21,6 @@ open class UIComposeAdapter(
         return FilterFields()
     }
 
-
     override fun getItemViewType(position: Int): Int {
         return displayedFields[position].layout
     }
@@ -92,7 +91,6 @@ open class UIComposeAdapter(
         return true
     }
 
-
     /**
      * error message of model with failed validation. This returns empty if @isFormValid() has not been called at least one.
      * To ensure this returns the right message, call @isFormValid before calling this method
@@ -109,12 +107,10 @@ open class UIComposeAdapter(
         return completeFields.associateTo(hashMapOf()) { it.key to it.getValue() }
     }
 
-
     inner class FilterFields : Filter() {
         override fun performFiltering(constraint: CharSequence?): FilterResults {
             return performSearch(constraint)
         }
-
 
         private fun performSearch(constraint: CharSequence?): FilterResults {
             search = constraint?.toString() ?: ""
@@ -132,13 +128,11 @@ open class UIComposeAdapter(
             return filterResult
         }
 
-
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
             displayedFields.clear()
             displayedFields.addAll(results?.values as? MutableList<Field> ?: kotlin.run { mutableListOf<Field>() })
             notifyDataSetChanged()
         }
     }
-
 
 }

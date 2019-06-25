@@ -10,7 +10,6 @@ import java.util.*
 object ProdFactory {
     fun sampleUI(): MutableList<Field> {
         return mutableListOf<Field>().withFields {
-
             this += rvField<InputField> {
                 hint = "Customer Email"
                 key = "email"
@@ -38,16 +37,11 @@ object ProdFactory {
                 totalDue = 0.0
             }
             this += rvField<NoteField> {
-               hint="additional information for customer"
+                hint = "additional information for customer"
             }
-            this+= rvField<ActionField> {
+            this += rvField<ActionField> {
                 text = "Create Invoice"
             }
-
         }
-
-
     }
-
-
 }

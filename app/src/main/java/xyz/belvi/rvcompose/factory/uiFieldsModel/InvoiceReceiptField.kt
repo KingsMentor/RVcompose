@@ -19,7 +19,6 @@ data class InvoiceReceiptField(
     ) {
         itemView.receipt_sub_total.text = String.format("%,.2f", totalDue)
     }
-
     override fun getValue(): Any {
         return ""
     }

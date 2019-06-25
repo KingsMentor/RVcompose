@@ -10,7 +10,6 @@ import xyz.belvi.rvcomposelibrary.models.Field
 class RVcompose internal constructor(
     private val recyclerView: RecyclerView
 ) {
-
     private lateinit var clickEvent: (uiComposeAdapter: UIComposeAdapter, field: Field, position: Int) -> Unit
     var items = mutableListOf<Field>()
 
@@ -30,7 +29,6 @@ class RVcompose internal constructor(
         this.items.add(entry)
         return this
     }
-
 
     internal fun toAttached(): RVcomposeImp {
         return RVcomposeImp(UIComposeAdapter(items) { uiComposeAdapter, field, position ->

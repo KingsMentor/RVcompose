@@ -39,8 +39,6 @@ data class SpinnerField(
                 }
                 selectedPosition = position
                 event(this@SpinnerField)
-
-
             }
         }
     }
@@ -52,6 +50,5 @@ data class SpinnerField(
     override fun getValue(): Any {
         return items[selectedPosition]
     }
-
 }
 
