@@ -141,7 +141,7 @@ data class AdditemField(
 ```
 this example shows executing email validation on InputField.
 
-`Validation` This is important when building Forms or if you need to validated entry in the model. 
+**`Validation`** This is important when building Forms or if you need to validated entry in the model. 
 
 ```kotlin
 rvField<InputField> {
@@ -172,7 +172,7 @@ rvField<InputField> {
             }
 ```
 
-`errormessage` message to be displayed when validate fails.
+**`errormessage`** message to be displayed when validate fails.
 
 ```kotlin
 rvField<InputField>
@@ -329,7 +329,7 @@ rv.getAdapter().updateFields(CustomerFactory.sampleUI())
 
 ## Interaction between Models and Updating Models. 
 
-interaction between Models can happen in `bind()`. This provide `UIComposeAdapter` that you can use to retrieve a model by key or index, update the model and reflect changes on view by any of RecyclerView notifyAdapter functions. 
+interaction between Fields can happen in `bind()`. This provide `UIComposeAdapter` that you can use to retrieve a model by key or index, update the model and reflect changes on view by any of RecyclerView notifyAdapter functions. 
 
 ```kotlin
 override fun bind(
@@ -356,7 +356,7 @@ override fun bind(
 
 ## Handling Event 
 
-To handle event on `fieldClicked`, a Model needs to trigger event on `OnClick` of the inflated view. 
+To receive field event on `fieldEvent`, a Field needs to call `event(this)` on `onclick` of the view on. See this:
 
 ```kotlin
 override fun bind(
@@ -368,7 +368,7 @@ override fun bind(
         itemView.btn_action_field.text = text
         itemView.btn_action_field.setOnClickListener {
           // you can also perform actions here
-          event(this)
+          event(this) // do this so that it can be received on `fieldEvent`
         }
 
     }
@@ -380,7 +380,7 @@ You can also handle event for all Models in `fieldEvent`
 val rv = recycler.compose {
             withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
             fieldEvent { uiComposeAdapter, field, position ->
-                // perform action 
+                // event is received perform action 
             }
         }
 ```
