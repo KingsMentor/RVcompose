@@ -59,9 +59,5 @@ data class InvoiceDateField(
             picker.show()
         }
     }
-
-    override fun hasValidData(): Boolean {
-        return true
-    }
 }
 

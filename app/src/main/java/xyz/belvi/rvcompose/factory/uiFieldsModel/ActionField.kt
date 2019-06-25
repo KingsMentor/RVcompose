@@ -27,10 +27,6 @@ data class ActionField(
     ) {
         itemView.btn_action_field.text = text
         itemView.btn_action_field.setOnClickListener {
-            (uiComposeAdapter.fieldWithKey("email") as? InputField)?.let {
-                it.text = "button clicked"
-                uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key))
-            }
             event(this)
         }
 

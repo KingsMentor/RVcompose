@@ -15,10 +15,6 @@ data class AdditemField(
         return "Add Item"
     }
 
-    override fun hasValidData(): Boolean {
-        return true
-    }
-
     override fun bind(
         itemView: View,
         uiComposeAdapter: UIComposeAdapter,

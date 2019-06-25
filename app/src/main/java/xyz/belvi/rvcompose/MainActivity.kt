@@ -2,7 +2,6 @@ package xyz.belvi.rvcompose
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,14 +23,22 @@ class MainActivity : AppCompatActivity(), LifecycleOwner {
         val rv = recycler.compose {
             withLayoutManager(LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false))
             fieldEvent { uiComposeAdapter, field, position ->
-                if (field is ActionField && uiComposeAdapter.isFormValid()) {
-                    (uiComposeAdapter.fieldWithKey("email") as? InputField)?.let {
-                        it.text = "example@example.com"
-                        uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key = it.key))
+                when (field) {
+                    is ActionField -> {
+                        if (uiComposeAdapter.isFormValid()) {
+                            (uiComposeAdapter.fieldWithKey("email") as? InputField)?.let {
+                                it.text = "example@example.com"
+                                uiComposeAdapter.notifyItemChanged(uiComposeAdapter.fieldIndexWithKey(key = it.key))
+                            }
+                        } else {
+                            // show do something with error message
+                            Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
+                        }
                     }
-                } else {
-                    // show do something with error message
-                    Toast.makeText(this@MainActivity, uiComposeAdapter.formWarning(), Toast.LENGTH_LONG).show()
+                    is AdditemField->{
+                        uiComposeAdapter.fields().add(position,LabelInfo("New Item","This is a new product"))
+                        uiComposeAdapter.notifyItemInserted(position)
+                    }
                 }
             }
         }

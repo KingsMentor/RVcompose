@@ -40,7 +40,7 @@ open class UIComposeAdapter(
     }
 
     /**
-     * Update the models in this adapter
+     * Update the fields in this adapter
      */
     fun updateFields(uiModels: MutableList<Field>) {
         this.completeFields.clear()
@@ -49,9 +49,9 @@ open class UIComposeAdapter(
     }
 
     /**
-     * retrieve models in this adapter
+     * retrieve fields in this adapter
      */
-    fun models(): MutableList<Field> {
+    fun fields(): MutableList<Field> {
         return displayedFields
     }
 
@@ -77,7 +77,7 @@ open class UIComposeAdapter(
     }
 
     /**
-     * Perform validation check on all models
+     * Perform validation check on all fields
      */
     fun isFormValid(): Boolean {
         formWarning = ""
@@ -100,7 +100,7 @@ open class UIComposeAdapter(
     }
 
     /**
-     * returns a map of keys and value of the models
+     * returns a map of keys and value of the fields
      */
 
     fun formData(): HashMap<String, Any> {

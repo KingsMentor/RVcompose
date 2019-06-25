@@ -36,7 +36,7 @@ abstract class Field(
      * perform a validation check on this field @Field
      */
     open fun hasValidData(): Boolean {
-        return if (required) validation?.invoke() ?: kotlin.run { false } else false
+        return if (required) validation?.invoke() ?: kotlin.run { false } else true
     }
 
 
