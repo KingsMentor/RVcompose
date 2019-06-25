@@ -131,7 +131,7 @@ data class NoteField(
 
 ## Understanding the fields in a Model
 
-`layout`  The layout to be inflated. It is the only required field when `Fieid` is extended
+**`layout`**  The layout to be inflated. It is the only required field when `Fieid` is extended
 
 ```kotlin
 data class AdditemField(
@@ -151,7 +151,7 @@ rvField<InputField> {
 ```
 this example shows executing email validation on InputField.
 
-`Key` for referencing a model from the adapter. 
+**`Key`** for referencing a model from the adapter. 
 
 ```kotlin
 rvField<InputField> {
@@ -161,7 +161,7 @@ rvField<InputField> {
             }
 ```
 
-`required` for marking a field as required. validation is invoked ony if required is true
+**`required`** for marking a field as required. validation is invoked ony if required is true
 
 ```kotlin
 rvField<InputField> {
@@ -189,7 +189,7 @@ rvField<InputField>
 ```
 
 
-`datasource` Datasource of this model. You can choose to pass some data as paramerter to your model. A datasource can be an database object or any object that has information for updating your view
+**`datasource`** Datasource of this model. You can choose to pass some data as paramerter to your model. A datasource can be an database object or any object that has information for updating your view
 
 ```kotlin
 rvField<InputField>
@@ -208,7 +208,7 @@ rvField<InputField>
 
 
 
-`matchSearch()` Function for adding your model to a search result. `UIComposeAdapter` has model search implementation. To ensure your a model is considered while performing a search, override this function.
+**`matchSearch()`** Function for adding your model to a search result. `UIComposeAdapter` has model search implementation. To ensure your a model is considered while performing a search, override this function.
 
 ```kotlin
 override fun matchSearch(text: String): Boolean {
@@ -217,7 +217,7 @@ override fun matchSearch(text: String): Boolean {
 ```
 
 
-`getValue(): Any` Override the method to set the value the model should return.
+**`getValue(): Any`** Override the method to set the value the model should return.
 
 ```kotlin
 data class InvoiceDateField(
@@ -390,17 +390,17 @@ val rv = recycler.compose {
 
 UIComposeAdapter provides functions for interacting and updating the models. 
 
-`fieldWithKey()`  retrieve a Model from the adapter with a key.
+**`fieldWithKey()`**  retrieve a Model from the adapter with a key.
 
-`fieldIndex()`  retrieve a Model from the adapter with an index (if the index is known)
+**`fieldIndex()`**  retrieve a Model from the adapter with an index (if the index is known)
 
-`fieldIndexWithKey()`  retrieve a Model Index from the adapter with Key
+**`fieldIndexWithKey()`**  retrieve a Model Index from the adapter with Key
 
-`isFormValid()`  Run validation check on Models in the adapter
+**`isFormValid()`**  Run validation check on Models in the adapter
 
-`formWarning()`  returns an error message for field with failed validation
+**`formWarning()`**  returns an error message for field with failed validation
 
-`formData()`  Returns Hashmap<key,value> for models in the adapter.
+**`formData()`**  Returns Hashmap<key,value> for models in the adapter.
 
 ```kotlin
  val rv = recycler.compose {
