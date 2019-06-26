@@ -8,6 +8,11 @@
 
 <img src="https://raw.githubusercontent.com/KingsMentor/RVcompose/master/arts/rvcompose.png" width="100%" />
 
+
+
+![Sample](https://github.com/KingsMentor/RVcompose/blob/master/arts/sample.gif)
+
+
 ---
 
 
