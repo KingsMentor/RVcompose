@@ -11,6 +11,13 @@
 
 ---
 
+## Why
+
+A lot of applications follow a reusable UI pattern of design. I realized most design can be divided into reusable component. Instead of having to design the layout of different screens, I resulted in designing layout for specific UI requirment for reusability .
+I have tried this approach in a couple of applications (see example). It works great and allows me to build and add a new screen faster. It also helped improved updating views with changes in Models. It also fixes the issue with nested scroll performance when you combine things
+
+RVcompose is an underlying library that provides a structure for designing other applications using this pattern.
+
 ## Gradle Dependency
 
 Add this to your module's `build.gradle` file:
